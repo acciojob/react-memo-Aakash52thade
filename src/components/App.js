@@ -3,7 +3,8 @@ import UseMemo from './UseMemo';
 import ReactMemo from './ReactMemo';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]);  // For UseMemo only
+  const [skills, setSkills] = useState(["HTML", "CSS", "JavaScript"]);  // For ReactMemo only
   const [counter, setCounter] = useState(0);
 
   return (
@@ -16,8 +17,8 @@ function App() {
       />
       
       <ReactMemo 
-        todos={todos}
-        setTodos={setTodos}
+        skills={skills}
+        setSkills={setSkills}
       />
     </div>
   );

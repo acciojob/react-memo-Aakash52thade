@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 
-const ReactMemo = ({ todos, setTodos }) => {
+const ReactMemo = ({ skills, setSkills }) => {  // Changed from todos to skills
   const [inputValue, setInputValue] = useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
     
     if (inputValue.trim().length > 5) {
-      setTodos([...todos, inputValue.trim()]);
+      setSkills([...skills, inputValue.trim()]);  // Changed from todos to skills
       setInputValue("");
     }
-  };
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
   };
 
   return (
@@ -24,7 +20,7 @@ const ReactMemo = ({ todos, setTodos }) => {
         <input
           type="text"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={(e) => setInputValue(e.target.value)}
           data-testid="memo-input"
         />
         <button 
@@ -35,10 +31,10 @@ const ReactMemo = ({ todos, setTodos }) => {
         </button>
       </div>
 
-      <div data-testid="todos-list">
-        {todos.map((todo, index) => (
-          <li key={index} data-testid={`todo-item-${index}`}>
-            {todo}
+      <div data-testid="skills-list">
+        {skills.map((skill, index) => (  // Changed from todos to skills
+          <li key={index} data-testid={`skill-item-${index}`}>
+            {skill}
           </li>
         ))}
       </div>
