@@ -4,7 +4,7 @@ import ReactMemo from './ReactMemo';
 
 function App() {
   // State management - centralized in parent component
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(["HTML", "CSS", "JavaScript"]);
   const [counter, setCounter] = useState(0);
 
   return (
