@@ -3,7 +3,6 @@ import UseMemo from './UseMemo';
 import ReactMemo from './ReactMemo';
 
 function App() {
-  // State management - centralized in parent component
   const [todos, setTodos] = useState([]);
   const [counter, setCounter] = useState(0);
 

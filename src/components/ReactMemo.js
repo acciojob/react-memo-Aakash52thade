@@ -1,27 +1,49 @@
 import React, { useState } from 'react';
-import UseMemo from './UseMemo';
-import ReactMemo from './ReactMemo';
 
-function App() {
-  // State management - centralized in parent component
-  const [todos, setTodos] = useState(["HTML", "CSS", "JavaScript"]);
-  const [counter, setCounter] = useState(0);
+const ReactMemo = ({ todos, setTodos }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    
+    if (inputValue.trim().length > 5) {
+      setTodos([...todos, inputValue.trim()]);
+      setInputValue("");
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   return (
-    <div className="App">
-      <UseMemo 
-        todos={todos}
-        setTodos={setTodos}
-        counter={counter}
-        setCounter={setCounter}
-      />
+    <div>
+      <h2>React.memo</h2>
       
-      <ReactMemo 
-        todos={todos}
-        setTodos={setTodos}
-      />
+      <div>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          data-testid="memo-input"
+        />
+        <button 
+          onClick={handleClick}
+          data-testid="submit-button"
+        >
+          Add Skill
+        </button>
+      </div>
+
+      <div data-testid="todos-list">
+        {todos.map((todo, index) => (
+          <li key={index} data-testid={`todo-item-${index}`}>
+            {todo}
+          </li>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default React.memo(ReactMemo);

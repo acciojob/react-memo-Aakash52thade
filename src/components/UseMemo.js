@@ -2,22 +2,17 @@ import React, { useMemo } from 'react';
 
 const UseMemo = ({ counter, setCounter, setTodos, todos }) => {
   
-  // Add Todo functionality - adds "New todo" to the list
   const addTodo = () => {
     setTodos([...todos, "New todo"]);
   };
 
-  // Increment Counter functionality
   const handleIncrement = () => {
     setCounter(counter + 1);
   };
 
-  // useMemo - Performance optimization
-  // This expensive calculation only runs when 'todos' changes
   const expensiveCalculation = useMemo(() => {
     console.log("Calculating expensive operation...");
     
-    // Simulate expensive calculation
     let result = 0;
     for (let i = 0; i < 1000000000; i++) {
       result = i;
